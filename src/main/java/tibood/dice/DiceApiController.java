@@ -21,4 +21,10 @@ public class DiceApiController {
         return result;
     }
 
+    @GetMapping("/diceLogs")
+    public Iterable<DiceRollLog> diceLogs(){
+        return DiceRollLog();
+    }
+    
+
 }
