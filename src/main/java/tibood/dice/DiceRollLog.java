@@ -1,16 +1,13 @@
 package tibood.dice;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -22,6 +19,7 @@ public class DiceRollLog {
 
     private int diceCount;
 
+    @ElementCollection
     private List<Integer> results;
 
     private Date timestamp;
@@ -46,8 +44,8 @@ public class DiceRollLog {
         return results;
     }
 
-    public void setResults(List<Integer> results) {
-        this.results = results;
+    public void setResults(int value, int position) {
+        this.results.set(position, value);
     }
 
     public Date getTimestamp() {

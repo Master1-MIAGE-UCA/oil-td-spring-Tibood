@@ -1,10 +1,10 @@
 package tibood.dice;
 
+import java.util.Date;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import tibood.dice.DiceRepository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 public class DiceController {
@@ -17,13 +17,16 @@ public class DiceController {
     }
 
     @GetMapping("/rollDices/{X}")
-    public int rollDiceXtime(int X){
+    public int[] rollDiceXtime(@PathVariable int X){
         int result = 0;
+        DiceRollLog diceRollLog = new DiceRollLog();
+        diceRollLog.setDiceCount(X);
         for (int i = 0; i < X; i++) {
-            DiceRollLog diceRollLog = new DiceRollLog();
             result += new Dice().roll();
+            diceRollLog.setResults(i, result);
+            diceRollLog.setTimestamp(new Date());
         }
-        return result;
+        return diceRollLog.getResults();
     }
 
     @GetMapping("/diceLogs")
