@@ -3,8 +3,13 @@ package tibood.dice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import tibood.dice.DiceRepository;
+
 @RestController
-public class DiceApiController {
+public class DiceController {
+
+    private DiceRepository diceRepository;
 
     @GetMapping("/rollDice")
     public int rollDice(){
@@ -23,7 +28,7 @@ public class DiceApiController {
 
     @GetMapping("/diceLogs")
     public Iterable<DiceRollLog> diceLogs(){
-        return DiceRollLog();
+        return diceRepository.findAll();
     }
     
 
