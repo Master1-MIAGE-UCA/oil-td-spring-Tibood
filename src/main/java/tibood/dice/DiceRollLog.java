@@ -44,10 +44,10 @@ public class DiceRollLog {
         return results;
     }
 
-    public void setResults(int value, int position) {
-        this.results.set(position, value);
+    public void setResults(List<Integer> results) {
+        this.results = results;
     }
-
+    
     public Date getTimestamp() {
         return timestamp;
     }

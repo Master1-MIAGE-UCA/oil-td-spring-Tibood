@@ -2,8 +2,6 @@ package tibood.dice;
 
 import org.springframework.stereotype.Service;
 
-import tibood.dice.DiceRollLog.DiceRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,6 +9,8 @@ import java.util.Date;
 
 @Service
 public class DiceService {
+
+    
     private DiceRepository diceRepository;
 
     public DiceService(DiceRepository diceRepository) {
@@ -25,7 +25,6 @@ public class DiceService {
             int result = random.nextInt(6) + 1;
             results.add(result);
         }
-
         DiceRollLog history = new DiceRollLog();
         history.setDiceCount(numberOfDice);
         history.setResults(results);
