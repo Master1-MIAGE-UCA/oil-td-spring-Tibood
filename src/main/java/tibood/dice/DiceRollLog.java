@@ -57,11 +57,4 @@ public class DiceRollLog {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
-
-    @Repository
-    public interface DiceRepository extends JpaRepository<DiceRollLog, Long> {
-    
-
-    }
-
 }
